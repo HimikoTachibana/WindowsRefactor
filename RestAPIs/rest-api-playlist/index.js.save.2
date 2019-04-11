@@ -1,0 +1,42 @@
+const express = require('express');
+const routes = require('./routes/api');
+const bodyParser = require('body-parser');
+
+// set up express app
+const app = express();
+
+//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded(
+	{
+		app.use(express.json());
+app.use(express.urlencoded({ extended: true }));extended: true
+	}
+
+));
+app.use(bodyParser.json());
+
+//initialize routes 
+app.use('/api',routes);
+
+
+
+
+//Listening to HTTP requests
+
+
+// the '/' means route 
+/*app.get('/api',function(req,res){
+	//Browser at this point is still spinning because the request is still being handled
+	console.log('GET reqeust');
+	res.send({name: 'Yoshi'});
+});*/
+
+
+// Listen for requests at a specific port
+
+app.listen(process.env.port||4000,function(){
+	console.log(`now listening for requests`);
+});
+
+
+
